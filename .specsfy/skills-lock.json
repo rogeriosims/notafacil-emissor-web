@@ -1,0 +1,156 @@
+{
+  "schema_version": 1,
+  "skills": {
+    "specsfy-setup": {
+      "source": "base",
+      "installed_at": "2026-11-05T13:51:18.973Z",
+      "content_sha256": "f30994a0b8c21413e58df6aad319a6967ac52cfb29dbab1fee3a55bbab137a7a"
+    },
+    "specsfy-aux-stack": {
+      "source": "base",
+      "installed_at": "2026-11-05T13:51:18.980Z",
+      "content_sha256": "6b2fa9fdd87329028354fd54ee5ead686f11403b2c6c45c0175301b590bed3e3"
+    },
+    "specsfy-aux-rules": {
+      "source": "base",
+      "installed_at": "2026-11-05T13:51:18.985Z",
+      "content_sha256": "1379d99405c9cbe32e553f3a347163c0d23b9ac29ddb77b6e8b54d2d7bc11abf"
+    },
+    "specsfy-aux-database": {
+      "source": "base",
+      "installed_at": "2026-11-05T13:51:18.990Z",
+      "content_sha256": "0f0631e801c2c9b0d5d8a2521b61336fa78d9c08143d3e99e18f3741fac74d9a"
+    },
+    "specsfy-documentator": {
+      "source": "base",
+      "installed_at": "2026-11-05T13:51:18.995Z",
+      "content_sha256": "114ed00e9a0bc0e833cf3b7c98abf9fb0b3ebfe9490cb56d1f859ea10f4efe34"
+    },
+    "specsfy-01-inbox": {
+      "source": "base",
+      "installed_at": "2026-11-05T13:51:18.999Z",
+      "content_sha256": "95693dc2f33bd7b60fe524e1f63679eff8377a373f602a240c322c06ffd8b378"
+    },
+    "specsfy-02-backlog": {
+      "source": "base",
+      "installed_at": "2026-11-05T13:51:19.008Z",
+      "content_sha256": "024cb59258b15a18e7b4ce18081769b7a5983b6317cb9671d570582236c97036"
+    },
+    "specsfy-03-specify": {
+      "source": "base",
+      "installed_at": "2026-11-05T13:51:19.015Z",
+      "content_sha256": "7d4f7c5decae8b6e62865c9f6794621b013d81f293cf39f43208b91c423ecf89"
+    },
+    "specsfy-04-validate": {
+      "source": "base",
+      "installed_at": "2026-11-05T13:51:19.026Z",
+      "content_sha256": "86234b6a4ba18017a047213925f2f843c5f3a3b5cab9afba1065a08de1d708c8"
+    },
+    "specsfy-05-tasks": {
+      "source": "base",
+      "installed_at": "2026-11-05T13:51:19.032Z",
+      "content_sha256": "ca346f3402c575cbfaf7ccfa22e734641cd7ffc81f5de6761563aa2498a83d45"
+    },
+    "specsfy-06-tdd-bdd": {
+      "source": "base",
+      "installed_at": "2026-11-05T13:51:19.039Z",
+      "content_sha256": "b4a954ad0fd6fb5baf9d946e93fe0bd10cbfbca855836b4f305fd8076e1e8efb"
+    },
+    "specsfy-07-implement": {
+      "source": "base",
+      "installed_at": "2026-11-05T13:51:19.047Z",
+      "content_sha256": "1b30cfcd31172210396492126badaf1d48db02caabcb919382b9ae626627ceab"
+    },
+    "specsfy-update-spec": {
+      "source": "base",
+      "installed_at": "2026-11-05T13:51:19.052Z",
+      "content_sha256": "3d584b78f783f45974208aabe276acd7d79daa292a703c4cafcd570641686ca3"
+    },
+    "specsfy-progress": {
+      "source": "base",
+      "installed_at": "2026-11-05T13:51:19.060Z",
+      "content_sha256": "19309b56ad88e1f899367d1cff4ed53bbe0350b5535caac9bf21815980581924"
+    },
+    "specsfy-interviewer": {
+      "source": "base",
+      "installed_at": "2026-11-05T13:51:19.062Z",
+      "content_sha256": "e14bc8016fbd3a93b7da32a0a7247ecdc0e357f6e8b414cafb75e1d3a367b2be"
+    },
+    "specsfy-mvp-milestone-interviewer": {
+      "source": "base",
+      "installed_at": "2026-11-05T13:51:19.066Z",
+      "content_sha256": "1cc8a4ab500749355bcbd128022ca2eac44f5bdca8eccaa07d65caed275f6810"
+    },
+    "specsfy-roadmap-milestone-interviewer": {
+      "source": "base",
+      "installed_at": "2026-11-05T13:51:19.069Z",
+      "content_sha256": "13dbfbed42a0a59540dfab5f226a7fc55485c55c7b994a9b3248ed5b2b94ac7f"
+    },
+    "specsfy-milestone-governor": {
+      "source": "base",
+      "installed_at": "2026-11-05T13:51:19.072Z",
+      "content_sha256": "8901313c147a4c5afb4973df06ffa6ea4075e956ea55d3c87742617de7acda8b"
+    },
+    "specsfy-data-discovery": {
+      "source": "base",
+      "installed_at": "2026-11-05T13:51:19.076Z",
+      "content_sha256": "9981d8dbcac6d7f4561661217cab3151273d0d12acb6d0ac3e9693dbe7e3b29a"
+    },
+    "specsfy-specialist-laravel": {
+      "source": "specialists",
+      "installed_at": "2026-11-05T13:51:24.147Z",
+      "content_sha256": "299d29293e2c24132d092a8456b3cd94471fed79496c246431697e0160661307"
+    },
+    "specsfy-specialist-postgres": {
+      "source": "specialists",
+      "installed_at": "2026-11-05T13:51:24.151Z",
+      "content_sha256": "30496748c255c34edb2414b21d16432d4185498ea8c93ec9a6567d8d6720fb7a"
+    },
+    "specsfy-specialist-domain-modeling": {
+      "source": "specialists",
+      "installed_at": "2026-11-05T13:51:24.155Z",
+      "content_sha256": "a69abe8b8955c51a35b8d60d06bde3e3482b749ac62bde4f6f2c07e2f2f85335"
+    },
+    "specsfy-specialist-data-modeling": {
+      "source": "specialists",
+      "installed_at": "2026-11-05T13:51:24.159Z",
+      "content_sha256": "2ca720182e63dbee336c9081f158de2790e406643b1f5d715eccf024f82d4fbf"
+    },
+    "specsfy-specialist-code-review": {
+      "source": "specialists",
+      "installed_at": "2026-11-05T13:51:24.163Z",
+      "content_sha256": "decd7826f877c1ff9a348c7a90efa82d2ffb3d04bcf04017c75fab9d0854dcba"
+    },
+    "specsfy-specialist-react": {
+      "source": "specialists",
+      "installed_at": "2026-11-05T13:51:24.166Z",
+      "content_sha256": "c9757c67f4f53104bea993f36952735107e232963a71b6b343f065d0a05eac04"
+    },
+    "specsfy-specialist-tailwind-css": {
+      "source": "specialists",
+      "installed_at": "2026-11-05T13:51:24.171Z",
+      "content_sha256": "e343868617e1cef574c9ba39e7afe83f90048d27958539ce2608058e6f3c7ff3"
+    }
+  },
+  "framework": {
+    "source": "base",
+    "spec_sha256": "f8e36b8850f62d53b6a9bc7d33613e941a7f87e1400d65387204fd85ece12e46",
+    "template_sha256": "bc98e1529a7433ebe35afed2bfc5fec9c296d18b8ba975ea24318c486456efe2",
+    "templates_sha256": {
+      "Inbox.md": "a598c5ac2fddc936bd5856df6548b989a62c939d3198c3eb887405c074d08a6f",
+      "Backlog.md": "d3a354ce702cf29ae2900f77125710093bb6d8a12e3a68b01af139703ce3c92d",
+      "Spec.md": "bc98e1529a7433ebe35afed2bfc5fec9c296d18b8ba975ea24318c486456efe2",
+      "Tasks.md": "422e405586ea0d079fb6efd0ec58c6ebea8d6da89dd7b19428f97c31e8b0f7d2",
+      "Project.md": "13a1d10d8cac322ce2dc26931696e99b4586d6c7265f4beb7adf77d315aeda1c",
+      "Stack.md": "15e716554aabd183a18dd1752fcb1b57e931ef285d398e1ac6ee9c33571e476d",
+      "Rules.md": "c9bb19ebc5622b99891da62d02fb5237ff281f61b5f1e17879047a65e2e80304",
+      "Database.md": "ad8099e88883d5f1af6519c4ca6b524505e8b9cba435958f5c2bab34e013ab23",
+      "UserProfile.md": "fcc1c75b90328cd81b1be930147d4c9b4c5f7c83594836557dae2b19f076ab5a",
+      "Interface.md": "7eca6bc750c7c0e0d84748b85729f38fda8bb4240120f7913b8990aa0110967d",
+      "DESIGNSYSTEM.MD": "37fcf303a5f15597c4d138358c2a3d72f3c95264202eddb84d9a5c81bf12b6de"
+    },
+    "example_sha256": "8dfa2cf359b80e7ba37de7c75d45b16caca698cf80b02bd61f4225f7f764f525",
+    "agents_sha256": "d7ccce131ce45d83d5512a0cca53d02fb7a6ab827a5a64cd3847870633c1071a",
+    "claude_sha256": "ddd02f4166dbe49fce5e0444bd0ab9fac8dabbf47fd9d38c1539a56efc8bec28"
+  }
+}

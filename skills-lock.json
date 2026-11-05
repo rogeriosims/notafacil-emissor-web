@@ -1,0 +1,161 @@
+{
+  "version": 1,
+  "skills": {
+    "specsfy-01-inbox": {
+      "source": "../../../../tmp/specsfy-install-BKWMj3/checkout/skills",
+      "sourceType": "local",
+      "computedHash": "8c5be3d053bb0027414191781767c0695a20e6b4ee31d4325c4be2754e795e2d",
+      "installMode": "copy"
+    },
+    "specsfy-02-backlog": {
+      "source": "../../../../tmp/specsfy-install-BKWMj3/checkout/skills",
+      "sourceType": "local",
+      "computedHash": "3a387e431d2c3063c8f1524e74c913df0faef6bae43c60692ec4fd34ddae97b0",
+      "installMode": "copy"
+    },
+    "specsfy-03-specify": {
+      "source": "../../../../tmp/specsfy-install-BKWMj3/checkout/skills",
+      "sourceType": "local",
+      "computedHash": "f9d741d72a934de327e209acee9ed2da1893e8eb759e529e7ae26af18d885c82",
+      "installMode": "copy"
+    },
+    "specsfy-04-validate": {
+      "source": "../../../../tmp/specsfy-install-BKWMj3/checkout/skills",
+      "sourceType": "local",
+      "computedHash": "0dd7dd7743292632195058fcb6276d1db6c68b4b2f3f8802eb1d7470ededca04",
+      "installMode": "copy"
+    },
+    "specsfy-05-tasks": {
+      "source": "../../../../tmp/specsfy-install-BKWMj3/checkout/skills",
+      "sourceType": "local",
+      "computedHash": "ddc416c7d7a5dec436aca823d339469b40586b5a734f76205f47b3217c7cca79",
+      "installMode": "copy"
+    },
+    "specsfy-06-tdd-bdd": {
+      "source": "../../../../tmp/specsfy-install-BKWMj3/checkout/skills",
+      "sourceType": "local",
+      "computedHash": "117f34fb3b2e1011b29089a71fa887ae816404538db54b57083d1d3e2d9b891f",
+      "installMode": "copy"
+    },
+    "specsfy-07-implement": {
+      "source": "../../../../tmp/specsfy-install-BKWMj3/checkout/skills",
+      "sourceType": "local",
+      "computedHash": "ac16fa2b7d1617c0932b08827c36ed7ee3700c70c375a8c038d3441ceabe38f3",
+      "installMode": "copy"
+    },
+    "specsfy-aux-database": {
+      "source": "../../../../tmp/specsfy-install-BKWMj3/checkout/skills",
+      "sourceType": "local",
+      "computedHash": "17059a4288008dae98adb2d1e21177e56a770b10f5183fdee871a48546b61897",
+      "installMode": "copy"
+    },
+    "specsfy-aux-rules": {
+      "source": "../../../../tmp/specsfy-install-BKWMj3/checkout/skills",
+      "sourceType": "local",
+      "computedHash": "858b9f778a10e19dd1bb76fc17496f7822bf735b1fa3422f0bfe1cd031715772",
+      "installMode": "copy"
+    },
+    "specsfy-aux-stack": {
+      "source": "../../../../tmp/specsfy-install-BKWMj3/checkout/skills",
+      "sourceType": "local",
+      "computedHash": "6003d780af349a608e1efe64ca494914d8a112e9aa5ca27c2c37f62a24f4352d",
+      "installMode": "copy"
+    },
+    "specsfy-data-discovery": {
+      "source": "../../../../tmp/specsfy-install-BKWMj3/checkout/skills",
+      "sourceType": "local",
+      "computedHash": "6519b7fee099658fd73adaf28db363769f808c29f08cfae8ff4df3add7d2009f",
+      "installMode": "copy"
+    },
+    "specsfy-documentator": {
+      "source": "../../../../tmp/specsfy-install-BKWMj3/checkout/skills",
+      "sourceType": "local",
+      "computedHash": "ce211c9ed303676adab7c234def3c704d1ba2652516e474c8e378f5407529035",
+      "installMode": "copy"
+    },
+    "specsfy-interviewer": {
+      "source": "../../../../tmp/specsfy-install-BKWMj3/checkout/skills",
+      "sourceType": "local",
+      "computedHash": "c915e43b62afc1a12abbd3c2cde8d5639f62ee51a362ab24907a5dfb6a0a0e4e",
+      "installMode": "copy"
+    },
+    "specsfy-milestone-governor": {
+      "source": "../../../../tmp/specsfy-install-BKWMj3/checkout/skills",
+      "sourceType": "local",
+      "computedHash": "139ebd7f1e680de9a1cf1d02d8dd4752c8b19ae774edf147a16cef1defb9ebbf",
+      "installMode": "copy"
+    },
+    "specsfy-mvp-milestone-interviewer": {
+      "source": "../../../../tmp/specsfy-install-BKWMj3/checkout/skills",
+      "sourceType": "local",
+      "computedHash": "cf67334eeaeba5b589f845549d5b277b30341535afeb91a93fd93b29146da089",
+      "installMode": "copy"
+    },
+    "specsfy-progress": {
+      "source": "../../../../tmp/specsfy-install-BKWMj3/checkout/skills",
+      "sourceType": "local",
+      "computedHash": "29f2650e51c2c10a00a6090fdd04b67d5182dadc4ca8eda06ddffb0a8289768a",
+      "installMode": "copy"
+    },
+    "specsfy-roadmap-milestone-interviewer": {
+      "source": "../../../../tmp/specsfy-install-BKWMj3/checkout/skills",
+      "sourceType": "local",
+      "computedHash": "aa0cb76a46c3c7c887163641d4be51f4c0d51694df73ca65fff91e7770a793ce",
+      "installMode": "copy"
+    },
+    "specsfy-setup": {
+      "source": "../../../../tmp/specsfy-install-BKWMj3/checkout/skills",
+      "sourceType": "local",
+      "computedHash": "077a4b1473d444a542effad0f3faa2f706e466a7cfc277e496244c0252943194",
+      "installMode": "copy"
+    },
+    "specsfy-specialist-code-review": {
+      "source": "../../../../tmp/specsfy-install-ykQmaJ/checkout/specialists",
+      "sourceType": "local",
+      "computedHash": "33c3b33181fa7b7c21910bb83a9f796a4433fe1bf86fec926afbd429ceba740a",
+      "installMode": "copy"
+    },
+    "specsfy-specialist-data-modeling": {
+      "source": "../../../../tmp/specsfy-install-ykQmaJ/checkout/specialists",
+      "sourceType": "local",
+      "computedHash": "d9b6bf7e8ea6330f41eb21ab34b9c72b29ba98af3b0e799b644ea079072607b4",
+      "installMode": "copy"
+    },
+    "specsfy-specialist-domain-modeling": {
+      "source": "../../../../tmp/specsfy-install-ykQmaJ/checkout/specialists",
+      "sourceType": "local",
+      "computedHash": "b021b258a4cb645f2e77a5814f51870fd48b2f8fe068a125213c5b7f4486ed54",
+      "installMode": "copy"
+    },
+    "specsfy-specialist-laravel": {
+      "source": "../../../../tmp/specsfy-install-ykQmaJ/checkout/specialists",
+      "sourceType": "local",
+      "computedHash": "148807301eda4163855a92450f012b7930804a5ba68b65ac2881cfc98c5bfb82",
+      "installMode": "copy"
+    },
+    "specsfy-specialist-postgres": {
+      "source": "../../../../tmp/specsfy-install-ykQmaJ/checkout/specialists",
+      "sourceType": "local",
+      "computedHash": "c536b5f38faf03965e46f56e913606ead4f2a7d6a3dce134b1b185d4be744315",
+      "installMode": "copy"
+    },
+    "specsfy-specialist-react": {
+      "source": "../../../../tmp/specsfy-install-ykQmaJ/checkout/specialists",
+      "sourceType": "local",
+      "computedHash": "b073fb62d210c784a021a22cbaa50aefd6571c19bcb51dc13a525418c2815eb6",
+      "installMode": "copy"
+    },
+    "specsfy-specialist-tailwind-css": {
+      "source": "../../../../tmp/specsfy-install-ykQmaJ/checkout/specialists",
+      "sourceType": "local",
+      "computedHash": "3365d3e1636a1d6c07b5bb476ded81d10d94a50404434bb6a6a0c44b517a68cc",
+      "installMode": "copy"
+    },
+    "specsfy-update-spec": {
+      "source": "../../../../tmp/specsfy-install-BKWMj3/checkout/skills",
+      "sourceType": "local",
+      "computedHash": "fbdb306a11c4dae1759ad5f28cad5270844f16bc1d1a5015698cc4b69731589a",
+      "installMode": "copy"
+    }
+  }
+}
