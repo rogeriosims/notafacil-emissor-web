@@ -8,6 +8,12 @@
 
 O desenvolvimento deste repositório é orientado a especificações formais rastreáveis pelo framework **Specsfy**.
 
+- **Skills do Specsfy que o Jules DEVE carregar e assumir:**
+  1. `specsfy-06-tdd-bdd` (`.agents/skills/specsfy-06-tdd-bdd/SKILL.md`): Conduz o ciclo Red-Green-Refactor com testes Pest contendo a tag `SPECSFY:`.
+  2. `specsfy-07-implement` (`.agents/skills/specsfy-07-implement/SKILL.md`): Executa o checklist obrigatório (`PREP`, `EXECUTE`, `VERIFY`, `VISUAL`, `EVIDENCE`, `IMPROVE`) para cada tarefa.
+  3. `specsfy-specialist-laravel` (`.agents/skills/specsfy-specialist-laravel/SKILL.md`): Padrões canônicos do Laravel 11, tipagem estrita, controllers finos, FormRequests, Policies e isolamento de tenant.
+  4. `specsfy-specialist-postgres` (`.agents/skills/specsfy-specialist-postgres/SKILL.md`): Migrations com tipos rigorosos, foreign keys e índices.
+
 - **Fonte Única da Verdade:** Toda tarefa executada deve pertencer à spec ativa em `specs/planned/<NNNN>-<slug>/spec.md`.
 - **Proibido Código Sem Spec:** Nunca crie controllers, models, migrations ou regras de negócio que não estejam declaradas na seção 14 da spec ativa.
 - **Ciclo TDD:** Antes de implementar código de produção, certifique-se de que o teste Pest correspondente em `tests/` foi derivado do BDD da spec.
