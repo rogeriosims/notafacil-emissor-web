@@ -22,3 +22,13 @@
 
 ## RF-04: Numeração e Concorrência de DPS/RPS
 - A numeração sequencial de DPS por empresa e série deve ser obtida sob lock pessimista de banco de dados (`SELECT FOR UPDATE`) para evitar duplicidade de envio sob concorrência.
+
+## RF-05: Provedor Fiscal Agnóstico e Hexagonal (Ports & Adapters)
+- Todas as operações de transmissão, status, cancelamento e download de XML/PDF devem consumir exclusivamente a interface `FiscalProviderInterface`.
+- Nenhuma classe fora do respectivo Adapter (ex: `AcbrFiscalAdapter`, `CrawlerFiscalAdapter`) pode conter referências, URLs ou payloads proprietários de fornecedores de API.
+- O sistema deve operar via `FiscalManager` (Laravel Driver Pattern), suportando `acbr` (com Certificado A1), `crawler` (MEI sem A1 via Playwright), `nuvem_fiscal` e `mock` (testes).
+
+## RF-06: Duplicação e Agendamento de Notas
+- **Duplicar Nota:** Ação que cria um clone da nota em status `DRAFT` na data atual, zerando `number`, `dps_id` e snapshots de autorização, permitindo revisão antes de transmitir.
+- **Agendamento Recorrente:** Configurações em `invoice_schedules` com frequências (`monthly`, `quarterly`, etc.) e resolução de placeholders dinâmicos (`{{mes}}`, `{{mes_anterior}}`, `{{ano}}`), processadas via `php artisan schedules:process`.
+- **Emissão em Lote:** Processamento assíncrono via `Bus::batch()` no Redis Queues, com limite de 300 linhas por lote e bloqueio de exclusão se houver notas autorizadas.
