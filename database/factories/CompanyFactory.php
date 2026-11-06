@@ -17,7 +17,8 @@ class CompanyFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => $this->faker->company(),
+            'office_id' => \App\Models\Office::factory(),
         ];
     }
 }
