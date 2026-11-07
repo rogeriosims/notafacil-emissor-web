@@ -14,14 +14,12 @@ test('it filters companies by office id automatically via global scope', functio
     Company::factory()->count(2)->create(['office_id' => $office2->id]);
 
     // 2. Act: Autenticar como um usuário do office1 e consultar empresas
-    // TODO: Precisaremos criar o User e autenticá-lo, mas para o RED inicial do model Company:
-    // Supondo que a lógica do scope aplique o office_id do usuário logado:
-    // $user = User::factory()->create(['office_id' => $office1->id]);
-    // $this->actingAs($user);
+    $user = \App\Models\User::factory()->create([
+        'office_id' => $office1->id,
+        'role' => 'OFFICE_USER',
+    ]);
+    $this->actingAs($user);
 
-    // O scope deve limitar as empresas ao escritório do usuário autenticado.
-    // Vamos simular a aplicação do escopo global. No momento isso falhará
-    // porque Office e Company nem existem.
     $companies = Company::all();
 
     // 3. Assert

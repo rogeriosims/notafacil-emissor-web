@@ -28,9 +28,9 @@ class HierarchicalTenantScope implements Scope
 
         if ($activeCompanyId) {
             if ($model instanceof \App\Models\Company) {
-                $builder->where('id', $activeCompanyId);
+                $builder->where($model->qualifyColumn('id'), $activeCompanyId);
             } else {
-                $builder->where('company_id', $activeCompanyId);
+                $builder->where($model->qualifyColumn('company_id'), $activeCompanyId);
             }
             return;
         }
@@ -40,15 +40,15 @@ class HierarchicalTenantScope implements Scope
         }
 
         if ($user->role === 'OFFICE_USER') {
-            $builder->where('office_id', $user->office_id);
+            $builder->where($model->qualifyColumn('office_id'), $user->office_id);
             return;
         }
 
         if ($user->role === 'COMPANY_USER') {
              if ($model instanceof \App\Models\Company) {
-                 $builder->whereIn('id', DB::table('company_user')->select('company_id')->where('user_id', $user->id));
+                 $builder->whereIn($model->qualifyColumn('id'), DB::table('company_user')->select('company_id')->where('user_id', $user->id));
              } else {
-                 $builder->whereIn('company_id', DB::table('company_user')->select('company_id')->where('user_id', $user->id));
+                 $builder->whereIn($model->qualifyColumn('company_id'), DB::table('company_user')->select('company_id')->where('user_id', $user->id));
              }
         }
     }

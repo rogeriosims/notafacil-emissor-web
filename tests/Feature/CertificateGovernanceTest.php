@@ -16,7 +16,7 @@ test('it blocks certificate upload if company is not allowed', function () {
     ]);
 
     // Usuário que pertence à empresa (COMPANY_USER)
-    $user = User::factory()->create();
+    $user = User::factory()->create(['role' => 'COMPANY_USER']);
     $user->companies()->attach($company->id);
 
     // 2. Act
@@ -43,7 +43,7 @@ test('it allows certificate upload if company is allowed', function () {
     ]);
 
     // Usuário que pertence à empresa (COMPANY_USER)
-    $user = User::factory()->create();
+    $user = User::factory()->create(['role' => 'COMPANY_USER']);
     $user->companies()->attach($company->id);
 
     // 2. Act

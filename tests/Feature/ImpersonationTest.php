@@ -12,7 +12,10 @@ test('it applies impersonation context using X-Impersonate-Company-Id header', f
     $company2 = Company::factory()->create(['office_id' => $office->id]);
 
     // Usuário do escritório que tem acesso às duas empresas
-    $user = User::factory()->create(['office_id' => $office->id]);
+    $user = User::factory()->create([
+        'office_id' => $office->id,
+        'role' => 'OFFICE_USER',
+    ]);
 
     // 2. Act
     // Fazemos uma requisição simulando a aba que está com o contexto da company2
