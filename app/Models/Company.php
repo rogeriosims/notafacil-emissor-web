@@ -16,6 +16,7 @@ class Company extends Model
         'name',
         'office_id',
         'allow_client_certificate_upload',
+        'fiscal_driver', // Added this field explicitly to avoid any potential fillable issues
     ];
 
     public function office()
