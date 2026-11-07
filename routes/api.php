@@ -34,3 +34,7 @@ Route::middleware(['auth', EnsureTenantContext::class])->group(function () {
         return response()->json(['message' => 'Impersonation removed.']);
     });
 });
+
+Route::middleware(['auth', EnsureTenantContext::class])->group(function () {
+    Route::post('/invoices/{invoice}/duplicate', [\App\Http\Controllers\InvoiceCloningController::class, 'duplicate']);
+});
