@@ -37,4 +37,8 @@ Route::middleware(['auth', EnsureTenantContext::class])->group(function () {
 
 Route::middleware(['auth', EnsureTenantContext::class])->group(function () {
     Route::post('/invoices/{invoice}/duplicate', [\App\Http\Controllers\InvoiceCloningController::class, 'duplicate']);
+    Route::post('/batches', [\App\Http\Controllers\BatchController::class, 'store']);
+    Route::get('/batches', [\App\Http\Controllers\BatchController::class, 'index']);
+    Route::get('/batches/{id}', [\App\Http\Controllers\BatchController::class, 'show']);
+    Route::delete('/batches/{id}', [\App\Http\Controllers\BatchController::class, 'destroy']);
 });
