@@ -41,4 +41,8 @@ Route::middleware(['auth', EnsureTenantContext::class])->group(function () {
     Route::get('/batches', [\App\Http\Controllers\BatchController::class, 'index']);
     Route::get('/batches/{id}', [\App\Http\Controllers\BatchController::class, 'show']);
     Route::delete('/batches/{id}', [\App\Http\Controllers\BatchController::class, 'destroy']);
+    
+    Route::post('/invoices/{invoice}/issue', [\App\Http\Controllers\InvoiceIssuanceController::class, 'issue']);
+    Route::get('/invoices/{invoice}/status', [\App\Http\Controllers\InvoiceIssuanceController::class, 'status']);
+    Route::post('/invoices/{invoice}/cancel', [\App\Http\Controllers\InvoiceIssuanceController::class, 'cancel']);
 });

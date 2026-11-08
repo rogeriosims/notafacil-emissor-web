@@ -35,6 +35,9 @@ class Invoice extends Model
         'federal_taxes_snapshot',
         'xml_url',
         'pdf_url',
+        'tracking_id',
+        'cancellation_reason',
+        'cancelled_at',
     ];
 
     protected $casts = [
@@ -47,6 +50,7 @@ class Invoice extends Model
         'borrower_snapshot' => 'json',
         'iss_snapshot' => 'json',
         'federal_taxes_snapshot' => 'json',
+        'cancelled_at' => 'datetime',
     ];
 
     protected static function boot()
@@ -78,5 +82,10 @@ class Invoice extends Model
     public function schedule()
     {
         return $this->belongsTo(InvoiceSchedule::class, 'schedule_id');
+    }
+
+    public function payloads()
+    {
+        return $this->hasMany(InvoicePayload::class);
     }
 }
