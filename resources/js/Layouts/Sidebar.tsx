@@ -4,15 +4,24 @@ import {
     LayoutDashboard,
     FileText,
     FilePlus,
+    Users,
+    Briefcase,
+    BookOpen,
     Layers,
     CalendarClock,
+    Building,
+    Building2,
     Settings,
     ShieldCheck,
-    ReceiptText
+    ReceiptText,
+    Shield
 } from 'lucide-react';
 
 export default function Sidebar() {
-    const { url } = usePage();
+    const { url, props } = usePage<any>();
+    const role = props.auth?.role || 'user';
+    const isPlatformAdmin = role === 'PLATFORM_ADMIN';
+    const isOfficeAdmin = role === 'admin_escritorio' || role === 'OFFICE_ADMIN' || isPlatformAdmin;
 
     const sections = [
         {
@@ -21,6 +30,14 @@ export default function Sidebar() {
                 { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
                 { name: 'Notas Fiscais', href: '/invoices', icon: FileText },
                 { name: 'Nova Emissão', href: '/invoices/create', icon: FilePlus },
+                { name: 'Tomadores (Clientes)', href: '/borrowers', icon: Users },
+            ]
+        },
+        {
+            group: 'Catálogo & Regras',
+            items: [
+                { name: 'Serviços da Empresa', href: '/services', icon: Briefcase },
+                { name: 'Tabela LC 116 Nacional', href: '/management/service-codes', icon: BookOpen },
             ]
         },
         {
@@ -31,8 +48,14 @@ export default function Sidebar() {
             ]
         },
         {
-            group: 'Configurações',
+            group: 'Administração & Gestão',
             items: [
+                ...(isPlatformAdmin ? [
+                    { name: 'Escritórios Contábeis', href: '/management/offices', icon: Building },
+                ] : []),
+                ...(isOfficeAdmin ? [
+                    { name: 'Empresas Clientes', href: '/management/companies', icon: Building2 },
+                ] : []),
                 { name: 'Certificado e Dados', href: '/companies/settings', icon: Settings },
             ]
         }
@@ -40,7 +63,15 @@ export default function Sidebar() {
 
     const isItemActive = (href: string) => {
         if (href === '/dashboard') return url === '/dashboard' || url === '/';
-        if (href === '/invoices') return url === '/invoices' || url.startsWith('/invoices/') && !url.includes('/create');
+        if (href === '/invoices') return url === '/invoices' || (url.startsWith('/invoices/') && !url.includes('/create'));
+        if (href === '/borrowers') return url.startsWith('/borrowers');
+        if (href === '/services') return url.startsWith('/services');
+        if (href === '/batches') return url.startsWith('/batches');
+        if (href === '/schedules') return url.startsWith('/schedules');
+        if (href === '/management/offices') return url.startsWith('/management/offices');
+        if (href === '/management/companies') return url.startsWith('/management/companies');
+        if (href === '/management/service-codes') return url.startsWith('/management/service-codes');
+        if (href === '/companies/settings') return url.startsWith('/companies/settings');
         return url.startsWith(href);
     };
 
@@ -53,7 +84,9 @@ export default function Sidebar() {
                 </div>
                 <div>
                     <span className="font-bold text-base tracking-tight text-white block leading-tight">Nota Fácil</span>
-                    <span className="text-[10px] text-emerald-400 font-semibold uppercase tracking-wider block leading-tight">Emissor Web</span>
+                    <span className="text-[10px] text-emerald-400 font-semibold uppercase tracking-wider block leading-tight">
+                        {isPlatformAdmin ? 'Super Admin' : 'Emissor Web'}
+                    </span>
                 </div>
             </div>
 
@@ -91,7 +124,9 @@ export default function Sidebar() {
             <div className="p-4 border-t border-slate-800/80 bg-slate-950/20 text-xs flex items-center justify-between text-slate-400">
                 <div className="flex items-center space-x-2">
                     <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                    <span className="text-[11px] font-medium text-slate-300">Motor Fiscal Ativo</span>
+                    <span className="text-[11px] font-medium text-slate-300">
+                        {isPlatformAdmin ? 'Acesso Irrestrito' : 'Motor Fiscal Ativo'}
+                    </span>
                 </div>
                 <ShieldCheck className="w-4 h-4 text-emerald-400" />
             </div>
