@@ -87,12 +87,13 @@ export default function Index({ borrowers, filters = {} }: Props) {
                                     <th className="px-6 py-3.5">CPF / CNPJ</th>
                                     <th className="px-6 py-3.5">Contato</th>
                                     <th className="px-6 py-3.5">Localização</th>
+                                    <th className="px-6 py-3.5 text-right">Ações</th>
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-slate-100">
                                 {borrowers?.data?.length === 0 ? (
                                     <tr>
-                                        <td colSpan={4} className="px-6 py-12 text-center text-slate-400">
+                                        <td colSpan={5} className="px-6 py-12 text-center text-slate-400">
                                             <Users className="w-8 h-8 mx-auto mb-2 text-slate-300" />
                                             <p className="font-medium text-slate-600">Nenhum tomador cadastrado</p>
                                             <p className="text-xs text-slate-400 mt-1">Cadastre o primeiro cliente para emitir NFS-e</p>
@@ -126,6 +127,14 @@ export default function Index({ borrowers, filters = {} }: Props) {
                                                         <span>{b.street}, {b.number} - {b.state}</span>
                                                     </div>
                                                 ) : '-'}
+                                            </td>
+                                            <td className="px-6 py-4 text-right">
+                                                <Link
+                                                    href={route('borrowers.edit', b.id)}
+                                                    className="inline-flex items-center px-2.5 py-1 text-xs font-semibold text-blue-600 hover:text-blue-700 hover:bg-blue-50 rounded-md transition-colors"
+                                                >
+                                                    Editar
+                                                </Link>
                                             </td>
                                         </tr>
                                     ))

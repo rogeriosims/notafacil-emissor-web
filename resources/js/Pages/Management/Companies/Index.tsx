@@ -57,6 +57,7 @@ export default function Index({ companies }: Props) {
                                     <th className="px-6 py-3.5">Escritório Responsável</th>
                                     <th className="px-6 py-3.5">Provedor Fiscal</th>
                                     <th className="px-6 py-3.5">Certificado A1</th>
+                                    <th className="px-6 py-3.5 text-right">Ações</th>
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-slate-100">
@@ -91,6 +92,14 @@ export default function Index({ companies }: Props) {
                                                     Pendente
                                                 </span>
                                             )}
+                                        </td>
+                                        <td className="px-6 py-4 text-right">
+                                            <Link
+                                                href={route('management.companies.edit', c.id)}
+                                                className="inline-flex items-center px-2.5 py-1 text-xs font-semibold text-blue-600 hover:text-blue-700 hover:bg-blue-50 rounded-md transition-colors"
+                                            >
+                                                Editar
+                                            </Link>
                                         </td>
                                     </tr>
                                 ))}

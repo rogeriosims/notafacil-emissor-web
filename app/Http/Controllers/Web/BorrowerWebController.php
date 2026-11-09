@@ -50,7 +50,9 @@ class BorrowerWebController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
-        $companyId = $this->impersonationManager->getActiveCompanyId();
+        $companyId = $this->impersonationManager->getActiveCompanyId()
+            ?? $request->input('company_id')
+            ?? $request->user()?->companies()->first()?->id;
 
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -84,5 +86,59 @@ class BorrowerWebController extends Controller
         ]);
 
         return redirect()->route('borrowers.index')->with('success', 'Tomador cadastrado com sucesso.');
+    }
+
+    public function edit(string $id): Response
+    {
+        $borrower = Customer::findOrFail($id);
+
+        return Inertia::render('Borrowers/Edit', [
+            'borrower' => $borrower,
+        ]);
+    }
+
+    public function update(Request $request, string $id): RedirectResponse
+    {
+        $borrower = Customer::findOrFail($id);
+
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'tax_id' => ['required', 'string'],
+            'email' => ['nullable', 'email'],
+            'phone' => ['nullable', 'string'],
+            'street' => ['nullable', 'string'],
+            'number' => ['nullable', 'string'],
+            'neighborhood' => ['nullable', 'string'],
+            'city_code' => ['nullable', 'string'],
+            'state' => ['nullable', 'string', 'max:2'],
+            'zip_code' => ['nullable', 'string'],
+            'iss_withheld' => ['nullable', 'boolean'],
+        ]);
+
+        $cleanTaxId = preg_replace('/\D/', '', $validated['tax_id']);
+
+        $borrower->update([
+            'name' => $validated['name'],
+            'tax_id' => $cleanTaxId,
+            'email' => $validated['email'] ?? null,
+            'phone' => $validated['phone'] ?? null,
+            'street' => $validated['street'] ?? null,
+            'number' => $validated['number'] ?? null,
+            'neighborhood' => $validated['neighborhood'] ?? null,
+            'city_code' => $validated['city_code'] ?? null,
+            'state' => $validated['state'] ?? null,
+            'zip_code' => preg_replace('/\D/', '', $validated['zip_code'] ?? ''),
+            'iss_withheld' => (bool) ($validated['iss_withheld'] ?? false),
+        ]);
+
+        return redirect()->route('borrowers.index')->with('success', 'Tomador atualizado com sucesso.');
+    }
+
+    public function destroy(string $id): RedirectResponse
+    {
+        $borrower = Customer::findOrFail($id);
+        $borrower->delete();
+
+        return redirect()->route('borrowers.index')->with('success', 'Tomador removido com sucesso.');
     }
 }

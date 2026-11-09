@@ -44,7 +44,9 @@ class ServiceItemWebController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
-        $companyId = $this->impersonationManager->getActiveCompanyId();
+        $companyId = $this->impersonationManager->getActiveCompanyId()
+            ?? $request->input('company_id')
+            ?? $request->user()?->companies()->first()?->id;
 
         $validated = $request->validate([
             'service_code' => ['required', 'string'],
@@ -64,5 +66,47 @@ class ServiceItemWebController extends Controller
         ]);
 
         return redirect()->route('services.index')->with('success', 'Serviço municipal cadastrado com sucesso.');
+    }
+
+    public function edit(string $id): Response
+    {
+        $service = ServiceItem::findOrFail($id);
+        $serviceCodes = ServiceCode::orderBy('code')->get();
+
+        return Inertia::render('Services/Edit', [
+            'service' => $service,
+            'service_codes' => $serviceCodes,
+        ]);
+    }
+
+    public function update(Request $request, string $id): RedirectResponse
+    {
+        $service = ServiceItem::findOrFail($id);
+
+        $validated = $request->validate([
+            'service_code' => ['required', 'string'],
+            'description' => ['required', 'string'],
+            'default_rate' => ['required', 'numeric', 'min:2', 'max:5'],
+            'cnae_code' => ['nullable', 'string'],
+            'allow_retention' => ['nullable', 'boolean'],
+        ]);
+
+        $service->update([
+            'service_code' => $validated['service_code'],
+            'description' => $validated['description'],
+            'default_rate' => $validated['default_rate'],
+            'cnae_code' => $validated['cnae_code'] ?? null,
+            'allow_retention' => (bool) ($validated['allow_retention'] ?? true),
+        ]);
+
+        return redirect()->route('services.index')->with('success', 'Serviço municipal atualizado com sucesso.');
+    }
+
+    public function destroy(string $id): RedirectResponse
+    {
+        $service = ServiceItem::findOrFail($id);
+        $service->delete();
+
+        return redirect()->route('services.index')->with('success', 'Serviço municipal excluído com sucesso.');
     }
 }

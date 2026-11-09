@@ -61,11 +61,17 @@ Route::middleware(['auth', EnsureTenantContext::class])->group(function () {
     Route::get('/borrowers', [BorrowerWebController::class, 'index'])->name('borrowers.index');
     Route::get('/borrowers/create', [BorrowerWebController::class, 'create'])->name('borrowers.create');
     Route::post('/borrowers', [BorrowerWebController::class, 'store'])->name('borrowers.store');
+    Route::get('/borrowers/{id}/edit', [BorrowerWebController::class, 'edit'])->name('borrowers.edit');
+    Route::put('/borrowers/{id}', [BorrowerWebController::class, 'update'])->name('borrowers.update');
+    Route::delete('/borrowers/{id}', [BorrowerWebController::class, 'destroy'])->name('borrowers.destroy');
 
     // Catálogo de Serviços da Empresa
     Route::get('/services', [ServiceItemWebController::class, 'index'])->name('services.index');
     Route::get('/services/create', [ServiceItemWebController::class, 'create'])->name('services.create');
     Route::post('/services', [ServiceItemWebController::class, 'store'])->name('services.store');
+    Route::get('/services/{id}/edit', [ServiceItemWebController::class, 'edit'])->name('services.edit');
+    Route::put('/services/{id}', [ServiceItemWebController::class, 'update'])->name('services.update');
+    Route::delete('/services/{id}', [ServiceItemWebController::class, 'destroy'])->name('services.destroy');
 
     // Lotes e Agendamentos
     Route::get('/batches', [BatchWebController::class, 'index'])->name('batches.index');
@@ -81,7 +87,15 @@ Route::middleware(['auth', EnsureTenantContext::class])->group(function () {
     Route::get('/management/offices', [OfficeWebController::class, 'index'])->name('management.offices.index');
     Route::get('/management/offices/create', [OfficeWebController::class, 'create'])->name('management.offices.create');
     Route::post('/management/offices', [OfficeWebController::class, 'store'])->name('management.offices.store');
+    Route::get('/management/offices/{id}/edit', [OfficeWebController::class, 'edit'])->name('management.offices.edit');
+    Route::put('/management/offices/{id}', [OfficeWebController::class, 'update'])->name('management.offices.update');
+    Route::delete('/management/offices/{id}', [OfficeWebController::class, 'destroy'])->name('management.offices.destroy');
+
     Route::get('/management/companies', [CompanyWebController::class, 'index'])->name('management.companies.index');
     Route::get('/management/companies/create', [CompanyWebController::class, 'create'])->name('management.companies.create');
     Route::post('/management/companies', [CompanyWebController::class, 'store'])->name('management.companies.store');
+    Route::get('/management/companies/{id}/edit', [CompanyWebController::class, 'edit'])->name('management.companies.edit');
+    Route::put('/management/companies/{id}', [CompanyWebController::class, 'update'])->name('management.companies.update');
+    Route::post('/management/companies/{id}/certificate', [CompanyWebController::class, 'uploadCertificate'])->name('management.companies.certificate');
+    Route::delete('/management/companies/{id}', [CompanyWebController::class, 'destroy'])->name('management.companies.destroy');
 });
