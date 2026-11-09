@@ -4,6 +4,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Services\ImpersonationManager;
 use App\Http\Middleware\EnsureTenantContext;
+use App\Http\Controllers\Api\LookupController;
+use App\Http\Controllers\Api\SimulationController;
+
+// Consultas Agnósticas (CEP e CNPJ com prioridade ACBr e fallback)
+Route::middleware(['auth', EnsureTenantContext::class])->group(function () {
+    Route::get('/lookup/cnpj/{cnpj}', [LookupController::class, 'cnpj']);
+    Route::get('/lookup/cep/{cep}', [LookupController::class, 'cep']);
+    Route::post('/invoices/simulate', [SimulationController::class, 'simulate']);
+});
 
 Route::middleware(['auth', EnsureTenantContext::class])->group(function () {
     Route::get('/current-context', function (ImpersonationManager $manager) {

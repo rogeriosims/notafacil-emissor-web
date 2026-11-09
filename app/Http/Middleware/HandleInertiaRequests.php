@@ -1,43 +1,61 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 use App\Services\ImpersonationManager;
+use App\Models\Company;
 
 class HandleInertiaRequests extends Middleware
 {
-    /**
-     * The root template that is loaded on the first page visit.
-     *
-     * @var string
-     */
     protected $rootView = 'app';
 
-    /**
-     * Determine the current asset version.
-     */
     public function version(Request $request): string|null
     {
         return parent::version($request);
     }
 
-    /**
-     * Define the props that are shared by default.
-     *
-     * @return array<string, mixed>
-     */
     public function share(Request $request): array
     {
         $impersonator = app(ImpersonationManager::class);
+        $user = $request->user();
+
+        $activeCompanyId = $user ? $impersonator->getActiveCompanyId() : null;
+        $activeCompany = null;
+        $companies = [];
+
+        if ($user) {
+            $companies = $user->companies()->get(['companies.id', 'companies.name'])->toArray();
+            
+            // Se for admin do escritório e não tiver empresas associadas diretamente, pega as empresas do escritório
+            if (empty($companies) && $user->office_id) {
+                $companies = Company::where('office_id', $user->office_id)->get(['id', 'name'])->toArray();
+            }
+
+            if ($activeCompanyId) {
+                $activeCompany = Company::find($activeCompanyId, ['id', 'name']);
+            }
+        }
+
+        $isImpersonating = session()->has('impersonate_company_id');
 
         return [
             ...parent::share($request),
             'auth' => [
-                'user' => $request->user(),
+                'user' => $user,
+                'role' => $user?->role ?? 'user',
+                'is_impersonating' => $isImpersonating,
             ],
-            'active_company_id' => $impersonator->getActiveCompanyId(),
+            'active_company_id' => $activeCompanyId,
+            'active_company' => $activeCompany,
+            'companies' => $companies,
+            'flash' => [
+                'success' => fn () => $request->session()->get('success'),
+                'error' => fn () => $request->session()->get('error'),
+            ],
         ];
     }
 }

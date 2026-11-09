@@ -9,6 +9,8 @@ use App\Domain\Fiscal\DTOs\CanonicalInvoiceDTO;
 use App\Domain\Fiscal\DTOs\FiscalIssueResult;
 use App\Domain\Fiscal\DTOs\FiscalStatusResult;
 use App\Domain\Fiscal\DTOs\FiscalCancelResult;
+use App\Domain\Fiscal\DTOs\CnpjLookupResult;
+use App\Domain\Fiscal\DTOs\CepLookupResult;
 
 class MockFiscalAdapter implements FiscalProviderInterface
 {
@@ -69,5 +71,45 @@ class MockFiscalAdapter implements FiscalProviderInterface
         }
         
         return true;
+    }
+
+    public function lookupCnpj(string $cnpj): CnpjLookupResult
+    {
+        $clean = preg_replace('/\D/', '', $cnpj);
+
+        return new CnpjLookupResult(
+            cnpj: $clean,
+            companyName: 'EMPRESA MOCK TECNOLOGIA LTDA',
+            tradeName: 'MOCK TECH',
+            status: 'ATIVA',
+            address: [
+                'street' => 'Avenida Paulista',
+                'number' => '1000',
+                'complement' => 'Andar 10',
+                'neighborhood' => 'Bela Vista',
+                'city' => 'São Paulo',
+                'state' => 'SP',
+                'zipCode' => '01310100',
+                'ibgeCode' => '3550308',
+            ],
+            taxStatus: 'simples_nacional',
+            cnae: '6201-5/01',
+            source: 'MOCK'
+        );
+    }
+
+    public function lookupCep(string $cep): CepLookupResult
+    {
+        $clean = preg_replace('/\D/', '', $cep);
+
+        return new CepLookupResult(
+            cep: $clean,
+            street: 'Praça da Sé',
+            neighborhood: 'Sé',
+            city: 'São Paulo',
+            state: 'SP',
+            ibgeCode: '3550308',
+            source: 'MOCK'
+        );
     }
 }

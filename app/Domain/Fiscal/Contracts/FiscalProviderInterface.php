@@ -8,6 +8,8 @@ use App\Domain\Fiscal\DTOs\CanonicalInvoiceDTO;
 use App\Domain\Fiscal\DTOs\FiscalIssueResult;
 use App\Domain\Fiscal\DTOs\FiscalStatusResult;
 use App\Domain\Fiscal\DTOs\FiscalCancelResult;
+use App\Domain\Fiscal\DTOs\CnpjLookupResult;
+use App\Domain\Fiscal\DTOs\CepLookupResult;
 
 interface FiscalProviderInterface
 {
@@ -48,4 +50,20 @@ interface FiscalProviderInterface
      * @return bool
      */
     public function syncCertificate(string $base64Cert, string $password): bool;
+
+    /**
+     * Consulta agnóstica de dados cadastrais por CNPJ.
+     *
+     * @param string $cnpj
+     * @return CnpjLookupResult
+     */
+    public function lookupCnpj(string $cnpj): CnpjLookupResult;
+
+    /**
+     * Consulta agnóstica de endereço e código IBGE por CEP.
+     *
+     * @param string $cep
+     * @return CepLookupResult
+     */
+    public function lookupCep(string $cep): CepLookupResult;
 }
