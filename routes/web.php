@@ -14,6 +14,7 @@ use App\Http\Controllers\Web\ServiceItemWebController;
 use App\Http\Controllers\Web\ServiceCodeWebController;
 use App\Http\Controllers\Web\OfficeWebController;
 use App\Http\Controllers\Web\CompanyWebController;
+use App\Http\Controllers\Web\TaxSettingsController;
 use App\Http\Middleware\EnsureTenantContext;
 
 Route::get('/', function () {
@@ -78,11 +79,16 @@ Route::middleware(['auth', EnsureTenantContext::class])->group(function () {
     Route::get('/batches/create', [BatchWebController::class, 'create'])->name('batches.create');
     Route::get('/schedules', [ScheduleWebController::class, 'index'])->name('schedules.index');
 
-    // Configurações e Certificado
+    // Configurações e Certificado da Empresa
     Route::get('/companies/settings', [CompanySettingsController::class, 'index'])->name('companies.settings');
     Route::post('/companies/settings', [CompanySettingsController::class, 'update'])->name('companies.settings.update');
+    Route::post('/companies/settings/certificate', [CompanySettingsController::class, 'uploadCertificate'])->name('companies.settings.certificate');
 
     // Módulo de Gestão (Super Admin / Escritório)
+    Route::get('/management/tax-settings', [TaxSettingsController::class, 'index'])->name('management.tax-settings.index');
+    Route::post('/management/tax-settings/import', [TaxSettingsController::class, 'importCsv'])->name('management.tax-settings.import');
+    Route::post('/management/tax-settings/seed-defaults', [TaxSettingsController::class, 'seedDefaults'])->name('management.tax-settings.seed');
+
     Route::get('/management/service-codes', [ServiceCodeWebController::class, 'index'])->name('management.service-codes.index');
     Route::get('/management/offices', [OfficeWebController::class, 'index'])->name('management.offices.index');
     Route::get('/management/offices/create', [OfficeWebController::class, 'create'])->name('management.offices.create');

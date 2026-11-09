@@ -28,7 +28,49 @@ Route::middleware(['auth', EnsureTenantContext::class])->group(function () {
             abort(403);
         }
 
-        return response()->json(['message' => 'Certificado salvo com sucesso.']);
+        $request->validate([
+            'certificate' => ['required', 'file', 'max:5120'],
+            'password' => ['required', 'string'],
+        ]);
+
+        $file = $request->file('certificate');
+        $password = $request->input('password');
+        $content = file_get_contents($file->getRealPath());
+
+        $certs = [];
+        if (!openssl_pkcs12_read($content, $certs, $password)) {
+            return response()->json([
+                'message' => 'Senha incorreta ou arquivo PFX/P12 corrompido/inválido.',
+            ], 422);
+        }
+
+        $x509 = openssl_x509_parse($certs['cert']);
+        $expiresAt = isset($x509['validTo_time_t']) ? \Carbon\Carbon::createFromTimestamp($x509['validTo_time_t']) : null;
+        $issuerInfo = json_encode([
+            'subject' => $x509['subject'] ?? [],
+            'issuer' => $x509['issuer'] ?? [],
+            'valid_from' => isset($x509['validFrom_time_t']) ? date('c', $x509['validFrom_time_t']) : null,
+            'valid_to' => isset($x509['validTo_time_t']) ? date('c', $x509['validTo_time_t']) : null,
+        ]);
+
+        $certificate = \App\Models\Certificate::updateOrCreate(
+            ['company_id' => $company->id],
+            [
+                'pfx_encrypted' => base64_encode($content),
+                'password_encrypted' => $password,
+                'expires_at' => $expiresAt,
+                'issuer_info' => $issuerInfo,
+            ]
+        );
+
+        return response()->json([
+            'message' => 'Certificado Digital A1 validado e instalado com sucesso.',
+            'certificate' => [
+                'id' => $certificate->id,
+                'expires_at' => $certificate->expires_at?->format('d/m/Y H:i'),
+                'is_valid' => $certificate->expires_at ? $certificate->expires_at->isFuture() : false,
+            ]
+        ]);
     });
 });
 

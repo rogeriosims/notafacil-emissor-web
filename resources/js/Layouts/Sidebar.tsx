@@ -14,7 +14,8 @@ import {
     Settings,
     ShieldCheck,
     ReceiptText,
-    Shield
+    Shield,
+    Database
 } from 'lucide-react';
 
 export default function Sidebar() {
@@ -38,6 +39,7 @@ export default function Sidebar() {
             items: [
                 { name: 'Serviços da Empresa', href: '/services', icon: Briefcase },
                 { name: 'Tabela LC 116 Nacional', href: '/management/service-codes', icon: BookOpen },
+                { name: 'Importar Tabelas Fiscais', href: '/management/tax-settings', icon: Database },
             ]
         },
         {
@@ -52,11 +54,12 @@ export default function Sidebar() {
             items: [
                 ...(isPlatformAdmin ? [
                     { name: 'Escritórios Contábeis', href: '/management/offices', icon: Building },
+                    { name: 'Configuração Fiscal Backoffice', href: '/management/tax-settings', icon: Database },
                 ] : []),
                 ...(isOfficeAdmin ? [
                     { name: 'Empresas Clientes', href: '/management/companies', icon: Building2 },
                 ] : []),
-                { name: 'Certificado e Dados', href: '/companies/settings', icon: Settings },
+                { name: 'Configurações da Empresa', href: '/companies/settings', icon: Settings },
             ]
         }
     ];
@@ -71,6 +74,7 @@ export default function Sidebar() {
         if (href === '/management/offices') return url.startsWith('/management/offices');
         if (href === '/management/companies') return url.startsWith('/management/companies');
         if (href === '/management/service-codes') return url.startsWith('/management/service-codes');
+        if (href === '/management/tax-settings') return url.startsWith('/management/tax-settings');
         if (href === '/companies/settings') return url.startsWith('/companies/settings');
         return url.startsWith(href);
     };
